@@ -18,7 +18,14 @@ class CategoryRepo implements CategoryInterface
 
     public function updateCategoryName($categoryId, $newCategoryName)
     {
-        
+        try{
+            $cat = Category::find($categoryId);
+            $cat->name = $newCategoryName;
+            $cat->save();
+            return $cat . "renommer avec succès.";
+        }catch(\Exception $e){
+            return $e->getMessage();
+        }
     }
 
     public function deleteCategory($categoryId, $deletType)
