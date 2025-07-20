@@ -20,9 +20,12 @@ class CategoryRepo implements CategoryInterface
     {
         try{
             $cat = Category::find($categoryId);
+            if (!$cat) {
+                return "Catégorie non trouvée.";
+            }
             $cat->name = $newCategoryName;
             $cat->save();
-            return $cat . "renommer avec succès.";
+            return $cat->name . " renommé avec succès.";
         }catch(\Exception $e){
             return $e->getMessage();
         }
@@ -38,10 +41,10 @@ class CategoryRepo implements CategoryInterface
             if ($deletType === "soft") {
                 $cat->is_deleted = true;
                 $cat->save();
-                return $cat. "archiver avec succès.";
+                return $cat->name . " archivé avec succès.";
             }else {
                 $cat->delete();
-                return $cat . "supprimée définitivement avec succès.";
+                return $cat->name . " supprimée définitivement avec succès.";
             }
         } catch (\Exception $e) {
             return $e->getMessage();
