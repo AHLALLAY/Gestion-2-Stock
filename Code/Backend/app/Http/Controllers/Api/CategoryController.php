@@ -62,4 +62,30 @@ class CategoryController extends Controller
             ], 500);
         }
     }
+    
+    public function deleteCategory($categoryId, CategoryRequest $request)
+    {
+        try {
+            $data = $request->validated();
+            $result = $this->CatServ->deleteCategory($categoryId, $data['deletType']);
+            
+            return response()->json([
+                'message' => 'Catégorie supprimée avec succès',
+                'data' => $result,
+                'status' => 'success'
+            ], 200);
+        } catch (ValidationException $e) {
+            return response()->json([
+                'message' => 'Erreur de validation',
+                'erreur' => $e->errors(),
+                'status' => 'failed'
+            ], 422);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Erreur inattendue',
+                'erreur' => $e->getMessage(),
+                'status' => 'failed'
+            ], 500);
+        }
+    }
 }
