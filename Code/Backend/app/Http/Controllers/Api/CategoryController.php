@@ -13,6 +13,23 @@ class CategoryController extends Controller
     
     public function __construct(CategoryService $CatServ) { $this->CatServ = $CatServ; }
 
+    public function displayCategories()
+    {
+        try {
+            $result = $this->CatServ->displayCategories();
+            return response()->json([
+                'message' => 'Catégories trouvées avec succès',
+                'categories' => $result,
+                'status' => 'success'
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Erreur inattendue',
+                'erreur' => $e->getMessage(),
+                'status' => 'failed'
+            ], 500);
+        }
+    }
     public function addCategory(CategoryRequest $category)
     {
         try {

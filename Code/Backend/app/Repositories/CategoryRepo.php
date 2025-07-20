@@ -7,6 +7,16 @@ use App\Models\Category;
 
 class CategoryRepo implements CategoryInterface
 {
+    public function displayCategories()
+    {
+        try{
+            $cats = Category::all();
+            return $cats;
+        }catch(\Exception $e){
+            return $e->getMessage();
+        }
+    }
+    
     public function addCategory($category)
     {
         try{
