@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cahier des charges - Application de gestion de stock</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#4F46E5',
+            secondary: '#06B6D4',
+            accent: '#F59E42',
+            success: '#22C55E',
+            danger: '#EF4444',
+            grayDark: '#1E293B',
+            grayLight: '#F1F5F9',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans transition-colors duration-200">
+  <div class="max-w-6xl mx-auto p-4 sm:p-8 bg-white rounded-xl shadow-lg mt-8 mb-8 transition-colors duration-200">
+    <header class="mb-10 border-b border-gray-200 pb-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight mb-2">Cahier des Charges Complet</h1>
+        <p class="text-lg text-gray-600">Application de gestion de stock et d'inventaire</p>
+      </div>
+      <div class="flex items-center gap-4">
+        <span class="inline-block bg-secondary text-white text-xs px-3 py-1 rounded-full font-semibold">Version 1.0</span>
+      </div>
+    </header>
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-bold text-primary mb-4">1. Présentation Générale</h2>
+      <div class="bg-gray-100 p-4 rounded-lg">
+        <p class="text-gray-700">
+          Ce projet a été initié à la demande d’un ami, propriétaire d’une boutique spécialisée dans la réparation de téléphones portables et la vente d’accessoires.
+          L’application a pour objectif de faciliter la gestion des stocks d’accessoires pour téléphones, notamment les pochettes et autres articles similaires.
+        </p>
+      </div>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-bold text-primary mb-4">2. Planning & Fonctionnalités Détaillées</h2>
+      <!-- PHASE 1 -->
+      <div class="mb-8">
+        <h3 class="text-xl font-bold text-primary mb-4">Phase 1 – Catégories <span class='text-sm font-normal text-gray-500'>(5 jours)</span></h3>
+        <!-- Gestion des catégories -->
+        <div class="mb-6">
+          <h4 class="text-lg font-semibold text-success mb-2">Gestion des catégories</h4>
+          <div class="flex gap-2 mb-2">
+            <span class="bg-success text-white px-2 py-1 rounded text-xs font-semibold">Priorité : Haute</span>
+            <span class="bg-accent text-white px-2 py-1 rounded text-xs font-semibold">Difficulté : Moyenne</span>
+            <span class="bg-secondary text-white px-2 py-1 rounded text-xs font-semibold">Estimation : 180 min</span>
+          </div>
+          <div class="bg-gray-100 p-4 rounded-lg mb-2">
+            <h5 class="font-semibold mb-1">Opérations CRUD</h5>
+            <ul class="list-disc list-inside text-sm text-gray-700 mb-2">
+              <li><strong>Ajouter :</strong> Nom (obligatoire), description, image/icône</li>
+              <li><strong>Afficher :</strong> Actuelles, supprimées, total</li>
+              <li><strong>Modifier :</strong> Nom, description, image/icône</li>
+              <li><strong>Supprimer :</strong> Douce (archivage) ou solide (définitive)</li>
+            </ul>
+            <h5 class="font-semibold mb-1">Fonctionnalités</h5>
+            <ul class="list-disc list-inside text-sm text-gray-700">
+              <li>Recherche par nom</li>
+              <li>Filtrage par catégorie</li>
+              <li>Validation avant suppression</li>
+              <li>Vérification d'unicité</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Gestion des sous-catégories -->
+        <div class="mb-6">
+          <h4 class="text-lg font-semibold text-success mb-2">Gestion des sous-catégories</h4>
+          <div class="flex gap-2 mb-2">
+            <span class="bg-success text-white px-2 py-1 rounded text-xs font-semibold">Priorité : Haute</span>
+            <span class="bg-accent text-white px-2 py-1 rounded text-xs font-semibold">Difficulté : Moyenne</span>
+            <span class="bg-secondary text-white px-2 py-1 rounded text-xs font-semibold">Estimation : 120 min</span>
+          </div>
+          <div class="bg-gray-100 p-4 rounded-lg mb-2">
+            <h5 class="font-semibold mb-1">Opérations CRUD</h5>
+            <ul class="list-disc list-inside text-sm text-gray-700 mb-2">
+              <li><strong>Ajouter :</strong> Nom, catégorie parente (obligatoire), description</li>
+              <li><strong>Afficher :</strong> Actuelles, supprimées, total</li>
+              <li><strong>Modifier :</strong> Nom, description, catégorie parente</li>
+              <li><strong>Supprimer :</strong> Douce ou solide</li>
+            </ul>
+            <h5 class="font-semibold mb-1">Fonctionnalités</h5>
+            <ul class="list-disc list-inside text-sm text-gray-700">
+              <li>Recherche par nom</li>
+              <li>Filtrage par catégorie parente</li>
+              <li>Validation avant suppression</li>
+              <li>Gestion des relations hiérarchiques</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- PHASE 2 -->
+      <div class="mb-8">
+        <h3 class="text-xl font-bold text-primary mb-4">Phase 2 – Produits <span class='text-sm font-normal text-gray-500'>(10 jours)</span></h3>
+        <!-- Gestion des produits -->
+        <div class="mb-6">
+          <h4 class="text-lg font-semibold text-success mb-2">Gestion des produits</h4>
+          <div class="flex gap-2 mb-2">
+            <span class="bg-success text-white px-2 py-1 rounded text-xs font-semibold">Priorité : Haute</span>
+            <span class="bg-danger text-white px-2 py-1 rounded text-xs font-semibold">Difficulté : Difficile</span>
+            <span class="bg-secondary text-white px-2 py-1 rounded text-xs font-semibold">Estimation : 300 min</span>
+          </div>
+          <div class="bg-gray-100 p-4 rounded-lg mb-2">
+            <h5 class="font-semibold mb-1">Informations produit</h5>
+            <ul class="list-disc list-inside text-sm text-gray-700 mb-2">
+              <li><strong>Obligatoires :</strong> Nom, prix d'achat, quantité, prix de vente, sous-catégorie</li>
+              <li><strong>Optionnelles :</strong> Catégorie, image, couleur, description, QR Code/SKU</li>
+              <li><strong>Localisation :</strong> Coordonnées (ligne, colonne)</li>
+            </ul>
+            <h5 class="font-semibold mb-1">Fonctionnalités</h5>
+            <ul class="list-disc list-inside text-sm text-gray-700">
+              <li>Recherche par nom, QR Code, description</li>
+              <li>Filtrage multi-critères</li>
+              <li>Alertes de stock bas</li>
+              <li>Historique des modifications</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Gestion des ventes -->
+        <div class="mb-6">
+          <h4 class="text-lg font-semibold text-success mb-2">Gestion des ventes</h4>
+          <div class="flex gap-2 mb-2">
+            <span class="bg-success text-white px-2 py-1 rounded text-xs font-semibold">Priorité : Haute</span>
+            <span class="bg-accent text-white px-2 py-1 rounded text-xs font-semibold">Difficulté : Moyenne</span>
+            <span class="bg-secondary text-white px-2 py-1 rounded text-xs font-semibold">Estimation : 180 min</span>
+          </div>
+          <div class="bg-gray-100 p-4 rounded-lg mb-2">
+            <h5 class="font-semibold mb-1">Processus de vente</h5>
+            <ul class="list-disc list-inside text-sm text-gray-700 mb-2">
+              <li>Sélection des produits et quantités</li>
+              <li>Calcul automatique des totaux</li>
+              <li>Application de remises</li>
+              <li>Génération de factures/reçus</li>
+            </ul>
+            <h5 class="font-semibold mb-1">Informations vente</h5>
+            <ul class="list-disc list-inside text-sm text-gray-700">
+              <li>Date et heure de vente</li>
+              <li>Client (optionnel)</li>
+              <li>Mode de paiement</li>
+              <li>Mise à jour automatique du stock</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Gestion de stock -->
+        <div class="mb-6">
+          <h4 class="text-lg font-semibold text-success mb-2">Gestion de stock</h4>
+          <div class="flex gap-2 mb-2">
+            <span class="bg-accent text-white px-2 py-1 rounded text-xs font-semibold">Priorité : Moyenne</span>
+            <span class="bg-accent text-white px-2 py-1 rounded text-xs font-semibold">Difficulté : Moyenne</span>
+            <span class="bg-secondary text-white px-2 py-1 rounded text-xs font-semibold">Estimation : 120 min</span>
+          </div>
+          <div class="bg-gray-100 p-4 rounded-lg mb-2">
+            <h5 class="font-semibold mb-1">Surveillance</h5>
+            <ul class="list-disc list-inside text-sm text-gray-700 mb-2">
+              <li>État actuel du stock</li>
+              <li>Produits en rupture</li>
+              <li>Produits en surstock</li>
+              <li>Alertes configurables</li>
+            </ul>
+            <h5 class="font-semibold mb-1">Opérations</h5>
+            <ul class="list-disc list-inside text-sm text-gray-700">
+              <li>Entrées : achats, réapprovisionnements</li>
+              <li>Sorties : ventes, pertes, transferts</li>
+              <li>Inventaire physique</li>
+              <li>Réconciliation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- PHASE 3 -->
+      <div class="mb-8">
+        <h3 class="text-xl font-bold text-primary mb-4">Phase 3 – Statistiques <span class='text-sm font-normal text-gray-500'>(5 jours)</span></h3>
+        <!-- Statistiques et rapports -->
+        <div class="mb-6">
+          <h4 class="text-lg font-semibold text-accent mb-2">Statistiques et rapports</h4>
+          <div class="flex gap-2 mb-2">
+            <span class="bg-accent text-white px-2 py-1 rounded text-xs font-semibold">Priorité : Moyenne</span>
+            <span class="bg-danger text-white px-2 py-1 rounded text-xs font-semibold">Difficulté : Difficile</span>
+            <span class="bg-secondary text-white px-2 py-1 rounded text-xs font-semibold">Estimation : 240 min</span>
+          </div>
+          <div class="bg-gray-100 p-4 rounded-lg mb-2">
+            <h5 class="font-semibold mb-1">Statistiques générales</h5>
+            <ul class="list-disc list-inside text-sm text-gray-700 mb-2">
+              <li>Compteurs totaux (catégories, produits, ventes)</li>
+              <li>Chiffre d'affaires total</li>
+              <li>Valeur totale du stock</li>
+              <li>Marge bénéficiaire</li>
+            </ul>
+            <h5 class="font-semibold mb-1">Analyses détaillées</h5>
+            <ul class="list-disc list-inside text-sm text-gray-700">
+              <li>Statistiques par catégorie/sous-catégorie</li>
+              <li>Produits gagnants</li>
+              <li>Ventes par période</li>
+              <li>Rotation des produits</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- PHASE 4 -->
+      <div class="mb-8">
+        <h3 class="text-xl font-bold text-primary mb-4">Phase 4 – Fonctionnalités avancées <span class='text-sm font-normal text-gray-500'>(5 jours)</span></h3>
+        <!-- Fonctionnalités avancées -->
+        <div class="mb-6">
+          <h4 class="text-lg font-semibold text-accent mb-2">Fonctionnalités avancées</h4>
+          <div class="flex gap-2 mb-2">
+            <span class="bg-secondary text-white px-2 py-1 rounded text-xs font-semibold">Priorité : Basse</span>
+            <span class="bg-danger text-white px-2 py-1 rounded text-xs font-semibold">Difficulté : Difficile</span>
+            <span class="bg-secondary text-white px-2 py-1 rounded text-xs font-semibold">Estimation : 240 min</span>
+          </div>
+          <div class="bg-gray-100 p-4 rounded-lg mb-2">
+            <h5 class="font-semibold mb-1">Import/Export</h5>
+            <ul class="list-disc list-inside text-sm text-gray-700 mb-2">
+              <li>Export en CSV, Excel</li>
+              <li>Import de produits en lot</li>
+              <li>Rapports en PDF</li>
+              <li>Graphiques et tableaux de bord</li>
+            </ul>
+            <h5 class="font-semibold mb-1">Sécurité et maintenance</h5>
+            <ul class="list-disc list-inside text-sm text-gray-700">
+              <li>Gestion des utilisateurs et permissions</li>
+              <li>Journalisation des actions</li>
+              <li>Sauvegarde automatique</li>
+              <li>Notifications et alertes</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-bold text-primary mb-4">3. Contraintes techniques</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full border border-gray-300 rounded-lg overflow-hidden">
+          <thead>
+            <tr class="bg-gray-200">
+              <th class="border border-gray-300 px-4 py-2 text-left">Élément</th>
+              <th class="border border-gray-300 px-4 py-2 text-left">Spécification</th>
+              <th class="border border-gray-300 px-4 py-2 text-left">Justification</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="hover:bg-gray-100">
+              <td class="border border-gray-300 px-4 py-2 font-semibold">Architecture</td>
+              <td class="border border-gray-300 px-4 py-2">Application Web responsive</td>
+              <td class="border border-gray-300 px-4 py-2">Accès multi-appareils, facilité de maintenance</td>
+            </tr>
+            <tr class="hover:bg-gray-100">
+              <td class="border border-gray-300 px-4 py-2 font-semibold">Backend</td>
+              <td class="border border-gray-300 px-4 py-2">Laravel (PHP)</td>
+              <td class="border border-gray-300 px-4 py-2">Robustesse, sécurité, écosystème riche</td>
+            </tr>
+            <tr class="hover:bg-gray-100">
+              <td class="border border-gray-300 px-4 py-2 font-semibold">Frontend</td>
+              <td class="border border-gray-300 px-4 py-2">React.js + Tailwind CSS</td>
+              <td class="border border-gray-300 px-4 py-2">Interface moderne, réactive, maintenable</td>
+            </tr>
+            <tr class="hover:bg-gray-100">
+              <td class="border border-gray-300 px-4 py-2 font-semibold">Base de données</td>
+              <td class="border border-gray-300 px-4 py-2">PostgreSQL</td>
+              <td class="border border-gray-300 px-4 py-2">Fiabilité, performance, compatibilité Laravel</td>
+            </tr>
+            <tr class="hover:bg-gray-100">
+              <td class="border border-gray-300 px-4 py-2 font-semibold">Sécurité</td>
+              <td class="border border-gray-300 px-4 py-2">Authentification + autorisation</td>
+              <td class="border border-gray-300 px-4 py-2">Protection des données, traçabilité</td>
+            </tr>
+            <tr class="hover:bg-gray-100">
+              <td class="border border-gray-300 px-4 py-2 font-semibold">Performance</td>
+              <td class="border border-gray-300 px-4 py-2">Temps de réponse < 2s</td>
+              <td class="border border-gray-300 px-4 py-2">Expérience utilisateur optimale</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-bold text-primary mb-4">4. Critères d'acceptation</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-gray-200 p-4 rounded-lg">
+          <h3 class="font-semibold text-gray-800 mb-3">Fonctionnels</h3>
+          <ul class="list-disc list-inside space-y-2 text-sm text-gray-700">
+            <li>Toutes les opérations CRUD fonctionnent correctement</li>
+            <li>Les validations empêchent les erreurs de saisie</li>
+            <li>Les calculs automatiques sont précis</li>
+            <li>Les exports génèrent des fichiers valides</li>
+            <li>L'authentification protège l'accès</li>
+          </ul>
+        </div>
+        <div class="bg-gray-200 p-4 rounded-lg">
+          <h3 class="font-semibold text-gray-800 mb-3">Non-fonctionnels</h3>
+          <ul class="list-disc list-inside space-y-2 text-sm text-gray-700">
+            <li>Temps de réponse < 2 secondes</li>
+            <li>Interface responsive sur tous appareils</li>
+            <li>Sauvegarde automatique quotidienne</li>
+            <li>Gestion de 1000+ produits sans dégradation</li>
+            <li>Compatibilité navigateurs modernes</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-bold text-primary mb-4">5. Palette de couleurs pour l'interface utilisateur</h2>
+      <div class="flex flex-nowrap justify-center gap-4 mb-4 overflow-x-auto pb-2">
+        <div class="flex items-center gap-4 bg-white rounded-lg shadow p-3 mb-3 w-72">
+          <span class="w-10 h-10 rounded-full inline-block" style="background-color: #4F46E5;"></span>
+          <div>
+            <div class="font-bold text-gray-800">Primaire</div>
+            <div class="text-xs text-gray-600">#4F46E5</div>
+            <div class="text-xs text-gray-500">Boutons principaux, titres</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 bg-white rounded-lg shadow p-3 mb-3 w-72">
+          <span class="w-10 h-10 rounded-full inline-block" style="background-color: #06B6D4;"></span>
+          <div>
+            <div class="font-bold text-gray-800">Secondaire</div>
+            <div class="text-xs text-gray-600">#06B6D4</div>
+            <div class="text-xs text-gray-500">Actions secondaires, badges</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 bg-white rounded-lg shadow p-3 mb-3 w-72">
+          <span class="w-10 h-10 rounded-full inline-block" style="background-color: #F59E42;"></span>
+          <div>
+            <div class="font-bold text-gray-800">Accent</div>
+            <div class="text-xs text-gray-600">#F59E42</div>
+            <div class="text-xs text-gray-500">Mises en avant, alertes</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 bg-white rounded-lg shadow p-3 mb-3 w-72">
+          <span class="w-10 h-10 rounded-full inline-block" style="background-color: #22C55E;"></span>
+          <div>
+            <div class="font-bold text-gray-800">Succès</div>
+            <div class="text-xs text-gray-600">#22C55E</div>
+            <div class="text-xs text-gray-500">Validations, confirmations</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 bg-white rounded-lg shadow p-3 mb-3 w-72">
+          <span class="w-10 h-10 rounded-full inline-block" style="background-color: #EF4444;"></span>
+          <div>
+            <div class="font-bold text-gray-800">Danger</div>
+            <div class="text-xs text-gray-600">#EF4444</div>
+            <div class="text-xs text-gray-500">Erreurs, suppressions</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="mt-10 pt-6 border-t border-gray-200 text-center text-gray-500 text-sm">
+      <p class="mt-4">Application de gestion de stock © 2025</p>
+    </footer>
+  </div>
+</body>
+</html> 

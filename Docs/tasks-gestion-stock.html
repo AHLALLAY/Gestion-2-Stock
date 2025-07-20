@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planification - Gestion de Stock</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .task-card {
+            border-left: 4px solid;
+        }
+        .priority-high { border-left-color: #ef4444; }
+        .priority-medium { border-left-color: #f59e0b; }
+        .priority-low { border-left-color: #10b981; }
+        .subtask {
+            margin-left: 2rem;
+            border-left: 2px solid #e5e7eb;
+            padding-left: 1rem;
+        }
+        .status-not-started { border-left-color: #6b7280; }
+        .status-in-progress { border-left-color: #3b82f6; }
+        .status-review { border-left-color: #f59e0b; }
+        .status-completed { border-left-color: #10b981; }
+        .status-blocked { border-left-color: #ef4444; }
+        .progress-bar {
+            height: 6px;
+            background-color: #e5e7eb;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+        .progress-0 { width: 0%; background-color: #6b7280; }
+        .progress-25 { width: 25%; background-color: #ef4444; }
+        .progress-50 { width: 50%; background-color: #f59e0b; }
+        .progress-75 { width: 75%; background-color: #3b82f6; }
+        .progress-100 { width: 100%; background-color: #10b981; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <div class="max-w-6xl mx-auto">
+            <!-- Header -->
+            <div class="text-center mb-8">
+                <h1 class="text-3xl font-bold text-gray-900 mb-2">📋 Planification</h1>
+                <h2 class="text-xl text-gray-600">Application de Gestion de Stock</h2>
+                <p class="text-gray-500 mt-2">Liste des tâches organisées par phases</p>
+            </div>
+
+            <!-- Phase 1: Catégories -->
+            <div class="mb-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center">
+                    <span class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">1</span>
+                    Phase 1: Gestion des catégories (3 jours)
+                </h3>
+                
+                <!-- Tâche 1.1 -->
+                <div class="task-card priority-high bg-white rounded-lg shadow-md p-6 mb-4">
+                    <div class="flex items-start justify-between mb-3">
+                        <h4 class="text-lg font-semibold text-gray-900">Créer le modèle Category</h4>
+                    </div>
+                    <p class="text-gray-600 mb-3">Développer le modèle Laravel pour les catégories avec migration, validation et relations.</p>
+                    <div class="subtask">
+                        <h5 class="font-medium text-gray-800 mb-2">Sous-tâches:</h5>
+                        <ul class="space-y-1 text-sm text-gray-600">
+                            <li>• Créer la migration avec champs: id, name, description, image, created_at, updated_at</li>
+                            <li>• Implémenter le modèle Eloquent avec validation</li>
+                            <li>• Créer les relations avec les sous-catégories</li>
+                            <li>• Ajouter les méthodes CRUD de base</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Tâche 1.2 -->
+                <div class="task-card priority-high bg-white rounded-lg shadow-md p-6 mb-4">
+                    <div class="flex items-start justify-between mb-3">
+                        <h4 class="text-lg font-semibold text-gray-900">Créer le modèle Subcategory</h4>
+                    </div>
+                    <p class="text-gray-600 mb-3">Développer le modèle pour les sous-catégories avec relation parent-enfant.</p>
+                    <div class="subtask">
+                        <h5 class="font-medium text-gray-800 mb-2">Sous-tâches:</h5>
+                        <ul class="space-y-1 text-sm text-gray-600">
+                            <li>• Créer la migration avec foreign key vers categories</li>
+                            <li>• Implémenter la relation belongsTo avec Category</li>
+                            <li>• Ajouter validation pour éviter les catégories orphelines</li>
+                            <li>• Créer les méthodes de gestion hiérarchique</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Tâche 1.3 -->
+                <div class="task-card priority-medium bg-white rounded-lg shadow-md p-6 mb-4">
+                    <div class="flex items-start justify-between mb-3">
+                        <h4 class="text-lg font-semibold text-gray-900">Développer les contrôleurs API</h4>
+                    </div>
+                    <p class="text-gray-600 mb-3">Créer les contrôleurs RESTful pour gérer les catégories et sous-catégories via API.</p>
+                    <div class="subtask">
+                        <h5 class="font-medium text-gray-800 mb-2">Sous-tâches:</h5>
+                        <ul class="space-y-1 text-sm text-gray-600">
+                            <li>• CategoryController avec méthodes CRUD complètes</li>
+                            <li>• SubcategoryController avec gestion des relations</li>
+                            <li>• Validation des données d'entrée</li>
+                            <li>• Gestion des erreurs et réponses JSON</li>
+                            <li>• Tests unitaires de base</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 2: Produits -->
+            <div class="mb-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center">
+                    <span class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">2</span>
+                    Phase 2: Gestion des produits (5 jours)
+                </h3>
+
+                <!-- Tâche 2.1 -->
+                <div class="task-card priority-high bg-white rounded-lg shadow-md p-6 mb-4">
+                    <div class="flex items-start justify-between mb-3">
+                        <h4 class="text-lg font-semibold text-gray-900">Créer le modèle Product</h4>
+                    </div>
+                    <p class="text-gray-600 mb-3">Développer le modèle produit avec toutes les relations et validations nécessaires.</p>
+                    <div class="subtask">
+                        <h5 class="font-medium text-gray-800 mb-2">Sous-tâches:</h5>
+                        <ul class="space-y-1 text-sm text-gray-600">
+                            <li>• Migration avec tous les champs: nom, description, prix, stock, SKU, etc.</li>
+                            <li>• Relations avec Category et Subcategory</li>
+                            <li>• Génération automatique de QR Code/SKU</li>
+                            <li>• Validation des données et contraintes</li>
+                            <li>• Gestion des images de produits</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Tâche 2.2 -->
+                <div class="task-card priority-high bg-white rounded-lg shadow-md p-6 mb-4">
+                    <div class="flex items-start justify-between mb-3">
+                        <h4 class="text-lg font-semibold text-gray-900">Système de gestion de stock basique</h4>
+                    </div>
+                    <p class="text-gray-600 mb-3">Implémenter le suivi des quantités et la gestion des ruptures de stock.</p>
+                    <div class="subtask">
+                        <h5 class="font-medium text-gray-800 mb-2">Sous-tâches:</h5>
+                        <ul class="space-y-1 text-sm text-gray-600">
+                            <li>• Mise à jour automatique du stock lors des ventes</li>
+                            <li>• Détection des produits en rupture</li>
+                            <li>• Calcul de la valeur totale du stock</li>
+                            <li>• API pour consulter l'état du stock</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Tâche 2.3 -->
+                <div class="task-card priority-medium bg-white rounded-lg shadow-md p-6 mb-4">
+                    <div class="flex items-start justify-between mb-3">
+                        <h4 class="text-lg font-semibold text-gray-900">Système de ventes simples</h4>
+                    </div>
+                    <p class="text-gray-600 mb-3">Créer les modèles Sale et SaleItem pour gérer les transactions.</p>
+                    <div class="subtask">
+                        <h5 class="font-medium text-gray-800 mb-2">Sous-tâches:</h5>
+                        <ul class="space-y-1 text-sm text-gray-600">
+                            <li>• Modèles Sale et SaleItem avec relations</li>
+                            <li>• Calcul automatique des totaux et taxes</li>
+                            <li>• Gestion des remises et promotions</li>
+                            <li>• Génération de factures PDF</li>
+                            <li>• API pour créer et consulter les ventes</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Tâche 2.4 -->
+                <div class="task-card priority-medium bg-white rounded-lg shadow-md p-6 mb-4">
+                    <div class="flex items-start justify-between mb-3">
+                        <h4 class="text-lg font-semibold text-gray-900">Interface utilisateur React</h4>
+                    </div>
+                    <p class="text-gray-600 mb-3">Développer les composants React pour la gestion des produits et ventes.</p>
+                    <div class="subtask">
+                        <h5 class="font-medium text-gray-800 mb-2">Sous-tâches:</h5>
+                        <ul class="space-y-1 text-sm text-gray-600">
+                            <li>• Composants pour CRUD des produits</li>
+                            <li>• Interface de sélection de produits pour ventes</li>
+                            <li>• Formulaire de création de vente</li>
+                            <li>• Affichage du stock en temps réel</li>
+                            <li>• Intégration avec l'API Laravel</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 3: Statistiques -->
+            <div class="mb-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center">
+                    <span class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">3</span>
+                    Phase 3: Statistiques et rapports (3 jours)
+                </h3>
+
+                <!-- Tâche 3.1 -->
+                <div class="task-card priority-medium bg-white rounded-lg shadow-md p-6 mb-4">
+                    <div class="flex items-start justify-between mb-3">
+                        <h4 class="text-lg font-semibold text-gray-900">Statistiques générales</h4>
+                    </div>
+                    <p class="text-gray-600 mb-3">Développer les calculs de statistiques globales et les API correspondantes.</p>
+                    <div class="subtask">
+                        <h5 class="font-medium text-gray-800 mb-2">Sous-tâches:</h5>
+                        <ul class="space-y-1 text-sm text-gray-600">
+                            <li>• Calcul du chiffre d'affaires total</li>
+                            <li>• Valeur totale du stock</li>
+                            <li>• Marge bénéficiaire</li>
+                            <li>• Nombre total de produits et ventes</li>
+                            <li>• API pour récupérer les statistiques</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Tâche 3.2 -->
+                <div class="task-card priority-medium bg-white rounded-lg shadow-md p-6 mb-4">
+                    <div class="flex items-start justify-between mb-3">
+                        <h4 class="text-lg font-semibold text-gray-900">Analyses détaillées par catégorie</h4>
+                    </div>
+                    <p class="text-gray-600 mb-3">Créer des rapports détaillés par catégorie et produits gagnants.</p>
+                    <div class="subtask">
+                        <h5 class="font-medium text-gray-800 mb-2">Sous-tâches:</h5>
+                        <ul class="space-y-1 text-sm text-gray-600">
+                            <li>• Statistiques par catégorie et sous-catégorie</li>
+                            <li>• Identification des produits gagnants</li>
+                            <li>• Analyse des ventes par période</li>
+                            <li>• Calcul de la rotation des produits</li>
+                            <li>• Graphiques et visualisations</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 4: Stock avancé -->
+            <div class="mb-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center">
+                    <span class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">4</span>
+                    Phase 4: Stock avancé (4 jours)
+                </h3>
+
+                <!-- Tâche 4.1 -->
+                <div class="task-card priority-medium bg-white rounded-lg shadow-md p-6 mb-4">
+                    <div class="flex items-start justify-between mb-3">
+                        <h4 class="text-lg font-semibold text-gray-900">Système d'alertes configurables</h4>
+                    </div>
+                    <p class="text-gray-600 mb-3">Implémenter un système d'alertes pour les seuils de stock et surstock.</p>
+                    <div class="subtask">
+                        <h5 class="font-medium text-gray-800 mb-2">Sous-tâches:</h5>
+                        <ul class="space-y-1 text-sm text-gray-600">
+                            <li>• Modèle Alert avec configuration des seuils</li>
+                            <li>• Détection automatique des ruptures</li>
+                            <li>• Identification des produits en surstock</li>
+                            <li>• Notifications par email/interface</li>
+                            <li>• Dashboard des alertes actives</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Tâche 4.2 -->
+                <div class="task-card priority-medium bg-white rounded-lg shadow-md p-6 mb-4">
+                    <div class="flex items-start justify-between mb-3">
+                        <h4 class="text-lg font-semibold text-gray-900">Gestion des mouvements de stock</h4>
+                    </div>
+                    <p class="text-gray-600 mb-3">Créer un système de traçabilité des entrées et sorties de stock.</p>
+                    <div class="subtask">
+                        <h5 class="font-medium text-gray-800 mb-2">Sous-tâches:</h5>
+                        <ul class="space-y-1 text-sm text-gray-600">
+                            <li>• Modèle StockMovement pour tracer les opérations</li>
+                            <li>• Gestion des entrées (achats, réapprovisionnements)</li>
+                            <li>• Gestion des sorties (ventes, pertes, transferts)</li>
+                            <li>• Inventaire physique avec réconciliation</li>
+                            <li>• Historique complet des mouvements</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 5: Fonctionnalités avancées -->
+            <div class="mb-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center">
+                    <span class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">5</span>
+                    Phase 5: Fonctionnalités avancées (3 jours)
+                </h3>
+
+                <!-- Tâche 5.1 -->
+                <div class="task-card priority-low bg-white rounded-lg shadow-md p-6 mb-4">
+                    <div class="flex items-start justify-between mb-3">
+                        <h4 class="text-lg font-semibold text-gray-900">Système d'import/export</h4>
+                    </div>
+                    <p class="text-gray-600 mb-3">Implémenter les fonctionnalités d'import et d'export de données.</p>
+                    <div class="subtask">
+                        <h5 class="font-medium text-gray-800 mb-2">Sous-tâches:</h5>
+                        <ul class="space-y-1 text-sm text-gray-600">
+                            <li>• Export des données en CSV et Excel</li>
+                            <li>• Import de produits en lot</li>
+                            <li>• Génération de rapports PDF</li>
+                            <li>• Validation des données importées</li>
+                            <li>• Interface utilisateur pour import/export</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Tâche 5.2 -->
+                <div class="task-card priority-low bg-white rounded-lg shadow-md p-6 mb-4">
+                    <div class="flex items-start justify-between mb-3">
+                        <h4 class="text-lg font-semibold text-gray-900">Sécurité et maintenance</h4>
+                    </div>
+                    <p class="text-gray-600 mb-3">Mettre en place la sécurité et les fonctionnalités de maintenance.</p>
+                    <div class="subtask">
+                        <h5 class="font-medium text-gray-800 mb-2">Sous-tâches:</h5>
+                        <ul class="space-y-1 text-sm text-gray-600">
+                            <li>• Système d'authentification et autorisation</li>
+                            <li>• Gestion des rôles utilisateurs</li>
+                            <li>• Journalisation des actions (logs)</li>
+                            <li>• Sauvegarde automatique de la base de données</li>
+                            <li>• Tests de sécurité et optimisation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Suppression de tous les scripts JS -->
+</body>
+</html> 
