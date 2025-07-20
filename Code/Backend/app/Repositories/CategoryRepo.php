@@ -16,13 +16,28 @@ class CategoryRepo implements CategoryInterface
         }
     }
 
-    public function updateCategoryName($newCategoryName)
+    public function updateCategoryName($categoryId, $newCategoryName)
     {
         
     }
 
-    public function deleteCategory($category, $deletType)
+    public function deleteCategory($categoryId, $deletType)
     {
-        
+        try {
+            $cat = Category::find($categoryId);
+            if (!$cat) {
+                return "Catégorie non trouvée.";
+            }
+            if ($deletType === "soft") {
+                $cat->is_deleted = true;
+                $cat->save();
+                return $cat. "archiver avec succès.";
+            }else {
+                $cat->delete();
+                return $cat . "supprimée définitivement avec succès.";
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
     }
 }
