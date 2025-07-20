@@ -37,5 +37,29 @@ class CategoryController extends Controller
         }
     }
 
-
+    public function updateCategoryName($categoryId, CategoryRequest $request)
+    {
+        try {
+            $data = $request->validated();
+            $result = $this->CatServ->updateCategoryName($categoryId, $data['name']);
+            
+            return response()->json([
+                'message' => 'Nom de la catégorie mis à jour avec succès',
+                'data' => $result,
+                'status' => 'success'
+            ], 200);
+        } catch (ValidationException $e) {
+            return response()->json([
+                'message' => 'Erreur de validation',
+                'erreur' => $e->errors(),
+                'status' => 'failed'
+            ], 422);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Erreur inattendue',
+                'erreur' => $e->getMessage(),
+                'status' => 'failed'
+            ], 500);
+        }
+    }
 }
