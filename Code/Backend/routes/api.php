@@ -1,8 +1,10 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\CategoryController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+Route::controller(CategoryController::class)->group(function(){
+    Route::post('/categories', 'addCategory');
+    Route::patch('/categories/{categoryId}/name', 'updateCategoryName');
+    Route::delete('/categories/{categoryId}', 'deleteCategory');
+});
