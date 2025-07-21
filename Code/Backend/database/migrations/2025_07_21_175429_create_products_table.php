@@ -16,6 +16,7 @@ return new class extends Migration
             $table->decimal('price', 5, 2);
             $table->string('localisation')->nullable();
             $table->foreignId('colorId')->constrained('colors')->nullable()->onDelete('cascade');
+            $table->string('image')->nullable();
             $table->boolean('is_deleted')->default(false);
             $table->timestamps();
         });

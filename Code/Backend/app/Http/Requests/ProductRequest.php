@@ -19,7 +19,7 @@ class ProductRequest extends FormRequest
                 'price' => ['required', 'numeric', 'min:0'],
                 'localisation' => ['nullable', 'string', 'max:100'],
                 'colorId' => ['nullable', 'integer'],
-                // 'model' et 'brand' si besoin
+                'image' => ['nullable', 'mime:png,jpg,jpeg,webpm'],
             ];
         }
         // Modification (PATCH) - editProduct
@@ -31,6 +31,7 @@ class ProductRequest extends FormRequest
                 'price' => ['sometimes', 'numeric', 'min:0'],
                 'localisation' => ['nullable', 'string', 'max:100'],
                 'colorId' => ['nullable', 'integer'],
+                'image' => ['nullable', 'mime:png,jpg,jpeg,webpm'],
             ];
         }
         // Suppression (DELETE) - deleteProduct
