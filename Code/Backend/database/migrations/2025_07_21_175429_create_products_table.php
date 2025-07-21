@@ -10,11 +10,11 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->enum('type', ['case','glass']);
-            $table->string('name');
-            $table->integer('quantity');
-            $table->string('localisation');
-            $table->foreignId('colorId')->constrained('colors')->onDelete('cascade');
+                $table->enum('type', ['case','glass']);
+                $table->string('name');
+                $table->integer('quantity');
+                $table->string('localisation')->nullable();
+                $table->foreignId('colorId')->constrained('colors')->nullable()->onDelete('cascade');
 
             $table->timestamps();
         });
