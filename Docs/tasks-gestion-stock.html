@@ -58,7 +58,6 @@
                 <h1 class="text-3xl font-bold text-gray-900 mb-2">📋 Planification</h1>
                 <h2 class="text-xl text-gray-600">Application de Gestion de Stock</h2>
                 <p class="text-gray-500 mt-2">Liste des tâches organisées par phases</p>
-                
                 <!-- Légende des statuts -->
                 <div class="flex justify-center gap-4 mt-4 text-sm">
                     <span class="status-badge status-completed-badge">✅ Terminé</span>
@@ -78,10 +77,10 @@
                 <!-- Tâche 1.1 -->
                 <div class="task-card priority-high bg-white rounded-lg shadow-md p-6 mb-4">
                     <div class="flex items-start justify-between mb-3">
-                        <h4 class="text-lg font-semibold text-gray-900">Créer le modèle Category</h4>
+                        <h4 class="text-lg font-semibold text-gray-900">Créer le modèle Brand</h4>
                         <span class="status-badge status-completed-badge">✅ Terminé</span>
                     </div>
-                    <p class="text-gray-600 mb-3">Développer le modèle Laravel pour les catégories avec migration, validation et relations.</p>
+                    <p class="text-gray-600 mb-3">Développer le modèle Laravel pour les marques avec migration, validation et relations.</p>
                     <div class="subtask">
                         <h5 class="font-medium text-gray-800 mb-2">Sous-tâches:</h5>
                         <ul class="space-y-1 text-sm text-gray-600">
@@ -96,8 +95,8 @@
                                 <span class="text-xs text-gray-400 ml-2">(Modèle complet avec champs obligatoires, description et image optionnels)</span>
                             </li>
                             <li class="flex items-center">
-                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
-                                Créer les relations avec les sous-catégories
+                                <span class="status-badge status-completed-badge mr-2">✅</span>
+                                Créer les relations avec les Modells
                             </li>
                             <li class="flex items-center">
                                 <span class="status-badge status-completed-badge mr-2">✅</span>
@@ -110,24 +109,24 @@
                 <!-- Tâche 1.2 -->
                 <div class="task-card priority-high bg-white rounded-lg shadow-md p-6 mb-4">
                     <div class="flex items-start justify-between mb-3">
-                        <h4 class="text-lg font-semibold text-gray-900">Créer le modèle Subcategory</h4>
-                        <span class="status-badge status-not-started-badge">⏳ À faire</span>
+                        <h4 class="text-lg font-semibold text-gray-900">Créer le modèle Modell</h4>
+                        <span class="status-badge status-completed-badge">✅ Terminé</span>
                     </div>
-                    <p class="text-gray-600 mb-3">Développer le modèle pour les sous-catégories avec relation parent-enfant.</p>
+                    <p class="text-gray-600 mb-3">Développer le modèle pour les Modells avec relation parent-enfant.</p>
                     <div class="subtask">
                         <h5 class="font-medium text-gray-800 mb-2">Sous-tâches:</h5>
                         <ul class="space-y-1 text-sm text-gray-600">
                             <li class="flex items-center">
-                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
-                                Créer la migration avec foreign key vers categories
+                                <span class="status-badge status-completed-badge mr-2">✅</span>
+                                Créer la migration avec foreign key vers brands
                             </li>
                             <li class="flex items-center">
-                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
-                                Implémenter la relation belongsTo avec Category
+                                <span class="status-badge status-completed-badge mr-2">✅</span>
+                                Implémenter la relation belongsTo avec Brand
                             </li>
                             <li class="flex items-center">
-                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
-                                Ajouter validation pour éviter les catégories orphelines
+                                <span class="status-badge status-completed-badge mr-2">✅</span>
+                                Ajouter validation pour éviter les marques orphelines
                             </li>
                             <li class="flex items-center">
                                 <span class="status-badge status-not-started-badge mr-2">⏳</span>
@@ -149,11 +148,11 @@
                         <ul class="space-y-1 text-sm text-gray-600">
                             <li class="flex items-center">
                                 <span class="status-badge status-completed-badge mr-2">✅</span>
-                                CategoryController avec méthodes CRUD complètes
+                                BrandController avec méthodes CRUD complètes
                             </li>
                             <li class="flex items-center">
                                 <span class="status-badge status-not-started-badge mr-2">⏳</span>
-                                SubcategoryController avec gestion des relations
+                                ModellController avec gestion des relations
                             </li>
                             <li class="flex items-center">
                                 <span class="status-badge status-completed-badge mr-2">✅</span>
@@ -183,7 +182,7 @@
                 <div class="task-card priority-high bg-white rounded-lg shadow-md p-6 mb-4">
                     <div class="flex items-start justify-between mb-3">
                         <h4 class="text-lg font-semibold text-gray-900">Créer le modèle Product</h4>
-                        <span class="status-badge status-not-started-badge">⏳ À faire</span>
+                        <span class="status-badge status-partial-badge">⚠️</span>
                     </div>
                     <p class="text-gray-600 mb-3">Développer le modèle produit avec toutes les relations et validations nécessaires.</p>
                     <div class="subtask">
@@ -194,8 +193,8 @@
                                 Migration avec tous les champs: nom, description, prix, stock, SKU, etc.
                             </li>
                             <li class="flex items-center">
-                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
-                                Relations avec Category et Subcategory
+                                <span class="status-badge status-completed-badge mr-2">✅</span>
+                                Relations avec Brand et Modell
                             </li>
                             <li class="flex items-center">
                                 <span class="status-badge status-not-started-badge mr-2">⏳</span>
@@ -323,14 +322,14 @@
                 <div class="task-card priority-medium bg-white rounded-lg shadow-md p-6 mb-4">
                     <div class="flex items-start justify-between mb-3">
                         <h4 class="text-lg font-semibold text-gray-900">Statistiques générales</h4>
-                        <span class="status-badge status-not-started-badge">⏳ À faire</span>
+                        <span class="status-badge status-partial-badge">⚠️</span>
                     </div>
                     <p class="text-gray-600 mb-3">Développer les calculs de statistiques globales et les API correspondantes.</p>
                     <div class="subtask">
                         <h5 class="font-medium text-gray-800 mb-2">Sous-tâches:</h5>
                         <ul class="space-y-1 text-sm text-gray-600">
                             <li class="flex items-center">
-                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                <span class="status-badge status-partial-badge mr-2">⚠️</span>
                                 Calcul du chiffre d'affaires total
                             </li>
                             <li class="flex items-center">
@@ -549,25 +548,25 @@
                         <div class="text-sm text-green-700">Tâches terminées</div>
                     </div>
                     <div class="text-center p-4 bg-blue-50 rounded-lg">
-                        <div class="text-2xl font-bold text-blue-600">1</div>
+                        <div class="text-2xl font-bold text-blue-600">0</div>
                         <div class="text-sm text-blue-700">Tâches en cours</div>
                     </div>
                     <div class="text-center p-4 bg-yellow-50 rounded-lg">
-                        <div class="text-2xl font-bold text-yellow-600">0</div>
+                        <div class="text-2xl font-bold text-yellow-600">1</div>
                         <div class="text-sm text-yellow-700">Tâches partielles</div>
                     </div>
                     <div class="text-center p-4 bg-gray-50 rounded-lg">
-                        <div class="text-2xl font-bold text-gray-600">12</div>
+                        <div class="text-2xl font-bold text-gray-600">11</div>
                         <div class="text-sm text-gray-700">Tâches à faire</div>
                     </div>
                 </div>
                 <div class="mt-4">
                     <div class="flex justify-between text-sm text-gray-600 mb-1">
                         <span>Progression globale</span>
-                        <span>25%</span>
+                        <span>22%</span>
                     </div>
                     <div class="w-full bg-gray-200 rounded-full h-2">
-                        <div class="bg-blue-600 h-2 rounded-full" style="width: 25%"></div>
+                        <div class="bg-blue-600 h-2 rounded-full" style="width: 22%"></div>
                     </div>
                 </div>
             </div>
