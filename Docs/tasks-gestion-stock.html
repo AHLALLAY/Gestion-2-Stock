@@ -80,19 +80,17 @@
                         <h4 class="text-lg font-semibold text-gray-900">Créer le modèle Brand</h4>
                         <span class="status-badge status-completed-badge">✅ Terminé</span>
                     </div>
-                    <p class="text-gray-600 mb-3">Développer le modèle Laravel pour les marques avec migration, validation et relations.</p>
+                    <p class="text-gray-600 mb-3">Développer le modèle Laravel pour 'Brand' avec migration, validation et relations.</p>
                     <div class="subtask">
                         <h5 class="font-medium text-gray-800 mb-2">Sous-tâches:</h5>
                         <ul class="space-y-1 text-sm text-gray-600">
                             <li class="flex items-center">
                                 <span class="status-badge status-completed-badge mr-2">✅</span>
-                                Créer la migration avec champs: id, name, description, image, created_at, updated_at
-                                <span class="text-xs text-gray-400 ml-2">(Migration créée avec name, is_deleted, timestamps - description et image optionnels)</span>
+                                Créer la migration
                             </li>
                             <li class="flex items-center">
                                 <span class="status-badge status-completed-badge mr-2">✅</span>
-                                Implémenter le modèle Eloquent avec validation
-                                <span class="text-xs text-gray-400 ml-2">(Modèle complet avec champs obligatoires, description et image optionnels)</span>
+                                Implémenter le modèle Eloquent avec validations
                             </li>
                             <li class="flex items-center">
                                 <span class="status-badge status-completed-badge mr-2">✅</span>
@@ -112,24 +110,24 @@
                         <h4 class="text-lg font-semibold text-gray-900">Créer le modèle Modell</h4>
                         <span class="status-badge status-completed-badge">✅ Terminé</span>
                     </div>
-                    <p class="text-gray-600 mb-3">Développer le modèle pour les Modells avec relation parent-enfant.</p>
+                    <p class="text-gray-600 mb-3">Développer le modèle 'Modells' avec relation parent-enfant.</p>
                     <div class="subtask">
                         <h5 class="font-medium text-gray-800 mb-2">Sous-tâches:</h5>
                         <ul class="space-y-1 text-sm text-gray-600">
                             <li class="flex items-center">
                                 <span class="status-badge status-completed-badge mr-2">✅</span>
-                                Créer la migration avec foreign key vers brands
+                                Créer la migration
                             </li>
                             <li class="flex items-center">
                                 <span class="status-badge status-completed-badge mr-2">✅</span>
-                                Implémenter la relation belongsTo avec Brand
+                                Implémenter la relation
                             </li>
                             <li class="flex items-center">
                                 <span class="status-badge status-completed-badge mr-2">✅</span>
                                 Ajouter validation pour éviter les marques orphelines
                             </li>
                             <li class="flex items-center">
-                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                <span class="status-badge status-completed-badge mr-2">✅</span>
                                 Créer les méthodes de gestion hiérarchique
                             </li>
                         </ul>
@@ -151,7 +149,7 @@
                                 BrandController avec méthodes CRUD complètes
                             </li>
                             <li class="flex items-center">
-                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                <span class="status-badge status-completed-badge mr-2">✅</span>
                                 ModellController avec gestion des relations
                             </li>
                             <li class="flex items-center">
@@ -161,10 +159,6 @@
                             <li class="flex items-center">
                                 <span class="status-badge status-completed-badge mr-2">✅</span>
                                 Gestion des erreurs et réponses JSON
-                            </li>
-                            <li class="flex items-center">
-                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
-                                Tests unitaires de base
                             </li>
                         </ul>
                     </div>
@@ -182,26 +176,22 @@
                 <div class="task-card priority-high bg-white rounded-lg shadow-md p-6 mb-4">
                     <div class="flex items-start justify-between mb-3">
                         <h4 class="text-lg font-semibold text-gray-900">Créer le modèle Product</h4>
-                        <span class="status-badge status-partial-badge">⚠️</span>
+                        <span class="status-badge status-partial-badge">⚠️ Partiel</span>
                     </div>
                     <p class="text-gray-600 mb-3">Développer le modèle produit avec toutes les relations et validations nécessaires.</p>
                     <div class="subtask">
                         <h5 class="font-medium text-gray-800 mb-2">Sous-tâches:</h5>
                         <ul class="space-y-1 text-sm text-gray-600">
                             <li class="flex items-center">
-                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
-                                Migration avec tous les champs: nom, description, prix, stock, SKU, etc.
+                                <span class="status-badge status-completed-badge mr-2">✅</span>
+                                Créer la migration 'Modell'
                             </li>
                             <li class="flex items-center">
                                 <span class="status-badge status-completed-badge mr-2">✅</span>
                                 Relations avec Brand et Modell
                             </li>
                             <li class="flex items-center">
-                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
-                                Génération automatique de QR Code/SKU
-                            </li>
-                            <li class="flex items-center">
-                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                <span class="status-badge status-completed-badge mr-2">✅</span>
                                 Validation des données et contraintes
                             </li>
                             <li class="flex items-center">
@@ -322,7 +312,7 @@
                 <div class="task-card priority-medium bg-white rounded-lg shadow-md p-6 mb-4">
                     <div class="flex items-start justify-between mb-3">
                         <h4 class="text-lg font-semibold text-gray-900">Statistiques générales</h4>
-                        <span class="status-badge status-partial-badge">⚠️</span>
+                        <span class="status-badge status-partial-badge">⚠️ partiel</span>
                     </div>
                     <p class="text-gray-600 mb-3">Développer les calculs de statistiques globales et les API correspondantes.</p>
                     <div class="subtask">
@@ -536,6 +526,15 @@
                             </li>
                         </ul>
                     </div>
+                </div>
+
+                <!-- Tâche 5.3 (ajoutée) -->
+                <div class="task-card priority-low bg-white rounded-lg shadow-md p-6 mb-4">
+                    <div class="flex items-start justify-between mb-3">
+                        <h4 class="text-lg font-semibold text-gray-900">QR Code/SKU (optionnel)</h4>
+                        <span class="status-badge status-not-started-badge">⏳ À faire</span>
+                    </div>
+                    <p class="text-gray-600 mb-3">Génération automatique de QR Code ou SKU pour les produits (fonctionnalité avancée, optionnelle).</p>
                 </div>
             </div>
 
