@@ -37,6 +37,17 @@
         .progress-50 { width: 50%; background-color: #f59e0b; }
         .progress-75 { width: 75%; background-color: #3b82f6; }
         .progress-100 { width: 100%; background-color: #10b981; }
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .status-completed-badge { background-color: #dcfce7; color: #166534; }
+        .status-in-progress-badge { background-color: #dbeafe; color: #1e40af; }
+        .status-not-started-badge { background-color: #f3f4f6; color: #374151; }
+        .status-partial-badge { background-color: #fef3c7; color: #92400e; }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
@@ -47,6 +58,14 @@
                 <h1 class="text-3xl font-bold text-gray-900 mb-2">📋 Planification</h1>
                 <h2 class="text-xl text-gray-600">Application de Gestion de Stock</h2>
                 <p class="text-gray-500 mt-2">Liste des tâches organisées par phases</p>
+                
+                <!-- Légende des statuts -->
+                <div class="flex justify-center gap-4 mt-4 text-sm">
+                    <span class="status-badge status-completed-badge">✅ Terminé</span>
+                    <span class="status-badge status-in-progress-badge">🔄 En cours</span>
+                    <span class="status-badge status-partial-badge">⚠️ Partiel</span>
+                    <span class="status-badge status-not-started-badge">⏳ À faire</span>
+                </div>
             </div>
 
             <!-- Phase 1: Catégories -->
@@ -60,15 +79,30 @@
                 <div class="task-card priority-high bg-white rounded-lg shadow-md p-6 mb-4">
                     <div class="flex items-start justify-between mb-3">
                         <h4 class="text-lg font-semibold text-gray-900">Créer le modèle Category</h4>
+                        <span class="status-badge status-completed-badge">✅ Terminé</span>
                     </div>
                     <p class="text-gray-600 mb-3">Développer le modèle Laravel pour les catégories avec migration, validation et relations.</p>
                     <div class="subtask">
                         <h5 class="font-medium text-gray-800 mb-2">Sous-tâches:</h5>
                         <ul class="space-y-1 text-sm text-gray-600">
-                            <li>• Créer la migration avec champs: id, name, description, image, created_at, updated_at</li>
-                            <li>• Implémenter le modèle Eloquent avec validation</li>
-                            <li>• Créer les relations avec les sous-catégories</li>
-                            <li>• Ajouter les méthodes CRUD de base</li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-completed-badge mr-2">✅</span>
+                                Créer la migration avec champs: id, name, description, image, created_at, updated_at
+                                <span class="text-xs text-gray-400 ml-2">(Migration créée avec name, is_deleted, timestamps - description et image optionnels)</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-completed-badge mr-2">✅</span>
+                                Implémenter le modèle Eloquent avec validation
+                                <span class="text-xs text-gray-400 ml-2">(Modèle complet avec champs obligatoires, description et image optionnels)</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Créer les relations avec les sous-catégories
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-completed-badge mr-2">✅</span>
+                                Ajouter les méthodes CRUD de base
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -77,15 +111,28 @@
                 <div class="task-card priority-high bg-white rounded-lg shadow-md p-6 mb-4">
                     <div class="flex items-start justify-between mb-3">
                         <h4 class="text-lg font-semibold text-gray-900">Créer le modèle Subcategory</h4>
+                        <span class="status-badge status-not-started-badge">⏳ À faire</span>
                     </div>
                     <p class="text-gray-600 mb-3">Développer le modèle pour les sous-catégories avec relation parent-enfant.</p>
                     <div class="subtask">
                         <h5 class="font-medium text-gray-800 mb-2">Sous-tâches:</h5>
                         <ul class="space-y-1 text-sm text-gray-600">
-                            <li>• Créer la migration avec foreign key vers categories</li>
-                            <li>• Implémenter la relation belongsTo avec Category</li>
-                            <li>• Ajouter validation pour éviter les catégories orphelines</li>
-                            <li>• Créer les méthodes de gestion hiérarchique</li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Créer la migration avec foreign key vers categories
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Implémenter la relation belongsTo avec Category
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Ajouter validation pour éviter les catégories orphelines
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Créer les méthodes de gestion hiérarchique
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -94,16 +141,32 @@
                 <div class="task-card priority-medium bg-white rounded-lg shadow-md p-6 mb-4">
                     <div class="flex items-start justify-between mb-3">
                         <h4 class="text-lg font-semibold text-gray-900">Développer les contrôleurs API</h4>
+                        <span class="status-badge status-completed-badge">✅ Terminé</span>
                     </div>
                     <p class="text-gray-600 mb-3">Créer les contrôleurs RESTful pour gérer les catégories et sous-catégories via API.</p>
                     <div class="subtask">
                         <h5 class="font-medium text-gray-800 mb-2">Sous-tâches:</h5>
                         <ul class="space-y-1 text-sm text-gray-600">
-                            <li>• CategoryController avec méthodes CRUD complètes</li>
-                            <li>• SubcategoryController avec gestion des relations</li>
-                            <li>• Validation des données d'entrée</li>
-                            <li>• Gestion des erreurs et réponses JSON</li>
-                            <li>• Tests unitaires de base</li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-completed-badge mr-2">✅</span>
+                                CategoryController avec méthodes CRUD complètes
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                SubcategoryController avec gestion des relations
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-completed-badge mr-2">✅</span>
+                                Validation des données d'entrée
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-completed-badge mr-2">✅</span>
+                                Gestion des erreurs et réponses JSON
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Tests unitaires de base
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -120,16 +183,32 @@
                 <div class="task-card priority-high bg-white rounded-lg shadow-md p-6 mb-4">
                     <div class="flex items-start justify-between mb-3">
                         <h4 class="text-lg font-semibold text-gray-900">Créer le modèle Product</h4>
+                        <span class="status-badge status-not-started-badge">⏳ À faire</span>
                     </div>
                     <p class="text-gray-600 mb-3">Développer le modèle produit avec toutes les relations et validations nécessaires.</p>
                     <div class="subtask">
                         <h5 class="font-medium text-gray-800 mb-2">Sous-tâches:</h5>
                         <ul class="space-y-1 text-sm text-gray-600">
-                            <li>• Migration avec tous les champs: nom, description, prix, stock, SKU, etc.</li>
-                            <li>• Relations avec Category et Subcategory</li>
-                            <li>• Génération automatique de QR Code/SKU</li>
-                            <li>• Validation des données et contraintes</li>
-                            <li>• Gestion des images de produits</li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Migration avec tous les champs: nom, description, prix, stock, SKU, etc.
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Relations avec Category et Subcategory
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Génération automatique de QR Code/SKU
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Validation des données et contraintes
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Gestion des images de produits
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -138,15 +217,28 @@
                 <div class="task-card priority-high bg-white rounded-lg shadow-md p-6 mb-4">
                     <div class="flex items-start justify-between mb-3">
                         <h4 class="text-lg font-semibold text-gray-900">Système de gestion de stock basique</h4>
+                        <span class="status-badge status-not-started-badge">⏳ À faire</span>
                     </div>
                     <p class="text-gray-600 mb-3">Implémenter le suivi des quantités et la gestion des ruptures de stock.</p>
                     <div class="subtask">
                         <h5 class="font-medium text-gray-800 mb-2">Sous-tâches:</h5>
                         <ul class="space-y-1 text-sm text-gray-600">
-                            <li>• Mise à jour automatique du stock lors des ventes</li>
-                            <li>• Détection des produits en rupture</li>
-                            <li>• Calcul de la valeur totale du stock</li>
-                            <li>• API pour consulter l'état du stock</li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Mise à jour automatique du stock lors des ventes
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Détection des produits en rupture
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Calcul de la valeur totale du stock
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                API pour consulter l'état du stock
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -155,16 +247,32 @@
                 <div class="task-card priority-medium bg-white rounded-lg shadow-md p-6 mb-4">
                     <div class="flex items-start justify-between mb-3">
                         <h4 class="text-lg font-semibold text-gray-900">Système de ventes simples</h4>
+                        <span class="status-badge status-not-started-badge">⏳ À faire</span>
                     </div>
                     <p class="text-gray-600 mb-3">Créer les modèles Sale et SaleItem pour gérer les transactions.</p>
                     <div class="subtask">
                         <h5 class="font-medium text-gray-800 mb-2">Sous-tâches:</h5>
                         <ul class="space-y-1 text-sm text-gray-600">
-                            <li>• Modèles Sale et SaleItem avec relations</li>
-                            <li>• Calcul automatique des totaux et taxes</li>
-                            <li>• Gestion des remises et promotions</li>
-                            <li>• Génération de factures PDF</li>
-                            <li>• API pour créer et consulter les ventes</li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Modèles Sale et SaleItem avec relations
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Calcul automatique des totaux et taxes
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Gestion des remises et promotions
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Génération de factures PDF
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                API pour créer et consulter les ventes
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -173,16 +281,32 @@
                 <div class="task-card priority-medium bg-white rounded-lg shadow-md p-6 mb-4">
                     <div class="flex items-start justify-between mb-3">
                         <h4 class="text-lg font-semibold text-gray-900">Interface utilisateur React</h4>
+                        <span class="status-badge status-not-started-badge">⏳ À faire</span>
                     </div>
                     <p class="text-gray-600 mb-3">Développer les composants React pour la gestion des produits et ventes.</p>
                     <div class="subtask">
                         <h5 class="font-medium text-gray-800 mb-2">Sous-tâches:</h5>
                         <ul class="space-y-1 text-sm text-gray-600">
-                            <li>• Composants pour CRUD des produits</li>
-                            <li>• Interface de sélection de produits pour ventes</li>
-                            <li>• Formulaire de création de vente</li>
-                            <li>• Affichage du stock en temps réel</li>
-                            <li>• Intégration avec l'API Laravel</li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Composants pour CRUD des produits
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Interface de sélection de produits pour ventes
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Formulaire de création de vente
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Affichage du stock en temps réel
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Intégration avec l'API Laravel
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -199,16 +323,32 @@
                 <div class="task-card priority-medium bg-white rounded-lg shadow-md p-6 mb-4">
                     <div class="flex items-start justify-between mb-3">
                         <h4 class="text-lg font-semibold text-gray-900">Statistiques générales</h4>
+                        <span class="status-badge status-not-started-badge">⏳ À faire</span>
                     </div>
                     <p class="text-gray-600 mb-3">Développer les calculs de statistiques globales et les API correspondantes.</p>
                     <div class="subtask">
                         <h5 class="font-medium text-gray-800 mb-2">Sous-tâches:</h5>
                         <ul class="space-y-1 text-sm text-gray-600">
-                            <li>• Calcul du chiffre d'affaires total</li>
-                            <li>• Valeur totale du stock</li>
-                            <li>• Marge bénéficiaire</li>
-                            <li>• Nombre total de produits et ventes</li>
-                            <li>• API pour récupérer les statistiques</li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Calcul du chiffre d'affaires total
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Valeur totale du stock
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Marge bénéficiaire
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Nombre total de produits et ventes
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                API pour récupérer les statistiques
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -217,16 +357,32 @@
                 <div class="task-card priority-medium bg-white rounded-lg shadow-md p-6 mb-4">
                     <div class="flex items-start justify-between mb-3">
                         <h4 class="text-lg font-semibold text-gray-900">Analyses détaillées par catégorie</h4>
+                        <span class="status-badge status-not-started-badge">⏳ À faire</span>
                     </div>
                     <p class="text-gray-600 mb-3">Créer des rapports détaillés par catégorie et produits gagnants.</p>
                     <div class="subtask">
                         <h5 class="font-medium text-gray-800 mb-2">Sous-tâches:</h5>
                         <ul class="space-y-1 text-sm text-gray-600">
-                            <li>• Statistiques par catégorie et sous-catégorie</li>
-                            <li>• Identification des produits gagnants</li>
-                            <li>• Analyse des ventes par période</li>
-                            <li>• Calcul de la rotation des produits</li>
-                            <li>• Graphiques et visualisations</li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Statistiques par catégorie et sous-catégorie
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Identification des produits gagnants
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Analyse des ventes par période
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Calcul de la rotation des produits
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Graphiques et visualisations
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -243,16 +399,32 @@
                 <div class="task-card priority-medium bg-white rounded-lg shadow-md p-6 mb-4">
                     <div class="flex items-start justify-between mb-3">
                         <h4 class="text-lg font-semibold text-gray-900">Système d'alertes configurables</h4>
+                        <span class="status-badge status-not-started-badge">⏳ À faire</span>
                     </div>
                     <p class="text-gray-600 mb-3">Implémenter un système d'alertes pour les seuils de stock et surstock.</p>
                     <div class="subtask">
                         <h5 class="font-medium text-gray-800 mb-2">Sous-tâches:</h5>
                         <ul class="space-y-1 text-sm text-gray-600">
-                            <li>• Modèle Alert avec configuration des seuils</li>
-                            <li>• Détection automatique des ruptures</li>
-                            <li>• Identification des produits en surstock</li>
-                            <li>• Notifications par email/interface</li>
-                            <li>• Dashboard des alertes actives</li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Modèle Alert avec configuration des seuils
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Détection automatique des ruptures
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Identification des produits en surstock
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Notifications par email/interface
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Dashboard des alertes actives
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -261,16 +433,32 @@
                 <div class="task-card priority-medium bg-white rounded-lg shadow-md p-6 mb-4">
                     <div class="flex items-start justify-between mb-3">
                         <h4 class="text-lg font-semibold text-gray-900">Gestion des mouvements de stock</h4>
+                        <span class="status-badge status-not-started-badge">⏳ À faire</span>
                     </div>
                     <p class="text-gray-600 mb-3">Créer un système de traçabilité des entrées et sorties de stock.</p>
                     <div class="subtask">
                         <h5 class="font-medium text-gray-800 mb-2">Sous-tâches:</h5>
                         <ul class="space-y-1 text-sm text-gray-600">
-                            <li>• Modèle StockMovement pour tracer les opérations</li>
-                            <li>• Gestion des entrées (achats, réapprovisionnements)</li>
-                            <li>• Gestion des sorties (ventes, pertes, transferts)</li>
-                            <li>• Inventaire physique avec réconciliation</li>
-                            <li>• Historique complet des mouvements</li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Modèle StockMovement pour tracer les opérations
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Gestion des entrées (achats, réapprovisionnements)
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Gestion des sorties (ventes, pertes, transferts)
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Inventaire physique avec réconciliation
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Historique complet des mouvements
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -287,16 +475,32 @@
                 <div class="task-card priority-low bg-white rounded-lg shadow-md p-6 mb-4">
                     <div class="flex items-start justify-between mb-3">
                         <h4 class="text-lg font-semibold text-gray-900">Système d'import/export</h4>
+                        <span class="status-badge status-not-started-badge">⏳ À faire</span>
                     </div>
                     <p class="text-gray-600 mb-3">Implémenter les fonctionnalités d'import et d'export de données.</p>
                     <div class="subtask">
                         <h5 class="font-medium text-gray-800 mb-2">Sous-tâches:</h5>
                         <ul class="space-y-1 text-sm text-gray-600">
-                            <li>• Export des données en CSV et Excel</li>
-                            <li>• Import de produits en lot</li>
-                            <li>• Génération de rapports PDF</li>
-                            <li>• Validation des données importées</li>
-                            <li>• Interface utilisateur pour import/export</li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Export des données en CSV et Excel
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Import de produits en lot
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Génération de rapports PDF
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Validation des données importées
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Interface utilisateur pour import/export
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -305,23 +509,69 @@
                 <div class="task-card priority-low bg-white rounded-lg shadow-md p-6 mb-4">
                     <div class="flex items-start justify-between mb-3">
                         <h4 class="text-lg font-semibold text-gray-900">Sécurité et maintenance</h4>
+                        <span class="status-badge status-not-started-badge">⏳ À faire</span>
                     </div>
                     <p class="text-gray-600 mb-3">Mettre en place la sécurité et les fonctionnalités de maintenance.</p>
                     <div class="subtask">
                         <h5 class="font-medium text-gray-800 mb-2">Sous-tâches:</h5>
                         <ul class="space-y-1 text-sm text-gray-600">
-                            <li>• Système d'authentification et autorisation</li>
-                            <li>• Gestion des rôles utilisateurs</li>
-                            <li>• Journalisation des actions (logs)</li>
-                            <li>• Sauvegarde automatique de la base de données</li>
-                            <li>• Tests de sécurité et optimisation</li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Système d'authentification et autorisation
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Gestion des rôles utilisateurs
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Journalisation des actions (logs)
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Sauvegarde automatique de la base de données
+                            </li>
+                            <li class="flex items-center">
+                                <span class="status-badge status-not-started-badge mr-2">⏳</span>
+                                Tests de sécurité et optimisation
+                            </li>
                         </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Résumé de progression -->
+            <div class="bg-white rounded-lg shadow-md p-6 mt-8">
+                <h3 class="text-xl font-bold text-gray-900 mb-4">📊 Résumé de progression</h3>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div class="text-center p-4 bg-green-50 rounded-lg">
+                        <div class="text-2xl font-bold text-green-600">2</div>
+                        <div class="text-sm text-green-700">Tâches terminées</div>
+                    </div>
+                    <div class="text-center p-4 bg-blue-50 rounded-lg">
+                        <div class="text-2xl font-bold text-blue-600">1</div>
+                        <div class="text-sm text-blue-700">Tâches en cours</div>
+                    </div>
+                    <div class="text-center p-4 bg-yellow-50 rounded-lg">
+                        <div class="text-2xl font-bold text-yellow-600">0</div>
+                        <div class="text-sm text-yellow-700">Tâches partielles</div>
+                    </div>
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <div class="text-2xl font-bold text-gray-600">12</div>
+                        <div class="text-sm text-gray-700">Tâches à faire</div>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="flex justify-between text-sm text-gray-600 mb-1">
+                        <span>Progression globale</span>
+                        <span>25%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-blue-600 h-2 rounded-full" style="width: 25%"></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Suppression de tous les scripts JS -->
 </body>
 </html> 
