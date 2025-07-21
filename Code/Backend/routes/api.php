@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\BrandController;
 use Illuminate\Support\Facades\Route;
 
-Route::controller(CategoryController::class)->group(function(){
-    Route::get('/categories', 'displayCategories');
-    Route::post('/categories', 'addCategory');
-    Route::patch('/categories/{categoryId}/name', 'updateCategoryName');
-    Route::delete('/categories/{categoryId}', 'deleteCategory');
+Route::controller(BrandController::class)->group(function(){
+    Route::get('/brands', 'displayBrands');
+    Route::post('/brands', 'addBrand');
+    Route::patch('/brands/{brandId}/name', 'updateBrandName');
+    Route::delete('/brands/{brandId}', 'deleteBrand');
 });

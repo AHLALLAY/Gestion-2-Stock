@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Interfaces\CategoryInterface;
-use App\Repositories\CategoryRepo;
+use App\Interfaces\BrandInterface;
+use App\Repositories\BrandRepo;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind(CategoryInterface::class, CategoryRepo::class);
+        $this->app->bind(BrandInterface::class, BrandRepo::class);
     }
 
     /**

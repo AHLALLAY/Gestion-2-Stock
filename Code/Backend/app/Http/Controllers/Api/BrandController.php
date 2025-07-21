@@ -3,20 +3,20 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CategoryRequest;
-use App\Services\CategoryService;
+use App\Http\Requests\BrandRequest;
+use App\Services\BrandService;
 use Illuminate\Validation\ValidationException;
 
-class CategoryController extends Controller
+class BrandController extends Controller
 {
-    protected $CatServ;
+    protected $brandServ;
     
-    public function __construct(CategoryService $CatServ) { $this->CatServ = $CatServ; }
+    public function __construct(BrandService $brandServ) { $this->brandServ = $brandServ; }
 
-    public function displayCategories()
+    public function displayBrands()
     {
         try {
-            $result = $this->CatServ->displayCategories();
+            $result = $this->brandServ->displayBrands();
             return response()->json([
                 'message' => 'Catégories trouvées avec succès',
                 'categories' => $result,
@@ -30,10 +30,10 @@ class CategoryController extends Controller
             ], 500);
         }
     }
-    public function addCategory(CategoryRequest $category)
+    public function addBrand(BrandRequest $brand)
     {
         try {
-            $result = $this->CatServ->addCategory($category->validated());
+            $result = $this->brandServ->addBrand($brand->validated());
             return response()->json([
                 'message' => 'Catégorie ajoutée avec succès',
                 'data' => $result,
@@ -54,11 +54,11 @@ class CategoryController extends Controller
         }
     }
 
-    public function updateCategoryName($categoryId, CategoryRequest $request)
+    public function updateBrandName($brandId, BrandRequest $request)
     {
         try {
             $data = $request->validated();
-            $result = $this->CatServ->updateCategoryName($categoryId, $data['name']);
+            $result = $this->brandServ->updateBrandName($brandId, $data['name']);
             
             return response()->json([
                 'message' => 'Nom de la catégorie mis à jour avec succès',
@@ -80,11 +80,11 @@ class CategoryController extends Controller
         }
     }
     
-    public function deleteCategory($categoryId, CategoryRequest $request)
+    public function deleteBrand($brandId, BrandRequest $request)
     {
         try {
             $data = $request->validated();
-            $result = $this->CatServ->deleteCategory($categoryId, $data['deletType']);
+            $result = $this->brandServ->deleteBrand($brandId, $data['deletType']);
             
             return response()->json([
                 'message' => 'Catégorie supprimée avec succès',
