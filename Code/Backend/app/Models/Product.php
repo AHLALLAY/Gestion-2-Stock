@@ -15,4 +15,12 @@ class Product extends Model
     public function modell(){
         return $this->belongsTo(Modell::class);
     }
+
+    public function getImageUrlAttribute()
+    {
+        if ($this->image) {
+            return asset('storage/' . $this->image);
+        }
+        return null;
+    }
 }

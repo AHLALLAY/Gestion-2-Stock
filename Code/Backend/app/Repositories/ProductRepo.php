@@ -10,7 +10,11 @@ class ProductRepo implements ProductInterface
     public function displayProducts()
     {
         try {
-            return Product::all();
+            $products = Product::all();
+            foreach ($products as $product) {
+                $product->image_url = $product->image_url;
+            }
+            return $products;
         } catch (\Exception $e) {
             return $e->getMessage();
         }
@@ -22,7 +26,9 @@ class ProductRepo implements ProductInterface
             if (isset($product['brand']) && isset($product['model'])) {
                 $product['name'] = $product['brand'] . '_' . $product['model'];
             }
-            return Product::create($product);
+            $created = Product::create($product);
+            $created->image_url = $created->image_url;
+            return $created;
         } catch (\Exception $e) {
             return $e->getMessage();
         }
@@ -37,6 +43,7 @@ class ProductRepo implements ProductInterface
             }
             $product->fill($data);
             $product->save();
+            $product->image_url = $product->image_url;
             return $product;
         } catch (\Exception $e) {
             return $e->getMessage();
@@ -75,7 +82,11 @@ class ProductRepo implements ProductInterface
     public function getProductByModel($model)
     {
         try {
-            return Product::where('model', $model)->get();
+            $products = Product::where('model', $model)->get();
+            foreach ($products as $product) {
+                $product->image_url = $product->image_url;
+            }
+            return $products;
         } catch (\Exception $e) {
             return $e->getMessage();
         }
@@ -84,7 +95,11 @@ class ProductRepo implements ProductInterface
     public function getProductByBrand($brand)
     {
         try {
-            return Product::where('brand', $brand)->get();
+            $products = Product::where('brand', $brand)->get();
+            foreach ($products as $product) {
+                $product->image_url = $product->image_url;
+            }
+            return $products;
         } catch (\Exception $e) {
             return $e->getMessage();
         }

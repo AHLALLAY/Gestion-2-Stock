@@ -29,7 +29,13 @@ class ProductController extends Controller
     public function addProduct(ProductRequest $request)
     {
         try {
-            $result = $this->productServ->addProduct($request->validated());
+            $data = $request->validated();
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $path = $image->store('products', 'public');
+                $data['image'] = $path;
+            }
+            $result = $this->productServ->addProduct($data);
             return response()->json([
                 'message' => 'Produit ajouté avec succès',
                 'data' => $result
@@ -44,7 +50,13 @@ class ProductController extends Controller
     public function editProduct($productId, ProductRequest $request)
     {
         try {
-            $result = $this->productServ->editProduct($productId, $request->validated());
+            $data = $request->validated();
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $path = $image->store('products', 'public');
+                $data['image'] = $path;
+            }
+            $result = $this->productServ->editProduct($productId, $data);
             return response()->json([
                 'message' => 'Produit modifié avec succès',
                 'data' => $result
