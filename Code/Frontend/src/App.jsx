@@ -40,7 +40,6 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Products />} />
-        <Route path="/products" element={<Products />} />
         <Route path="/brands" element={<Brands />} />
       </Routes>
     </div>
