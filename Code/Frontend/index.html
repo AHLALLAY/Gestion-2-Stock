@@ -3,10 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.tailwindcss.com/"></script>
-    <title>Vite + React</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#4F46E5',
+              secondary: '#06B6D4',
+              accent: '#F59E42',
+              success: '#22C55E',
+              danger: '#EF4444',
+              grayDark: '#1E293B',
+              grayLight: '#F1F5F9',
+            }
+          }
+        }
+      }
+    </script>
+    <title>Gestion de Stock</title>
   </head>
-  <body>
+  <body class="bg-gray-50">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
