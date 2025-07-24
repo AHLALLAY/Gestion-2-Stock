@@ -16,6 +16,10 @@ class Product extends Model
         return $this->belongsTo(Modell::class);
     }
 
+    public function color(){
+        return $this->hasMany(Color::class);
+    }
+
     public function getImageUrlAttribute()
     {
         if ($this->image) {
