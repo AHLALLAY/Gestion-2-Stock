@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\BrandController;
+use App\Http\Controllers\Api\ColorController;
 use App\Http\Controllers\Api\ModelController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ProductController;
@@ -10,6 +11,10 @@ Route::controller(BrandController::class)->group(function(){
     Route::post('/brands', 'addBrand');
     Route::patch('/brands/{brandId}/name', 'updateBrandName');
     Route::delete('/brands/{brandId}', 'deleteBrand');
+});
+
+Route::controller(ColorController::class)->group(function(){
+    Route::get('/colors', 'displayColors');
 });
 
 Route::controller(ModelController::class)->group(function(){
