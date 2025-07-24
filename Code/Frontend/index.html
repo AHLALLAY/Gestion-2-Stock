@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,21 +9,75 @@
         theme: {
           extend: {
             colors: {
-              primary: '#4F46E5',
-              secondary: '#06B6D4',
-              accent: '#F59E42',
-              success: '#22C55E',
-              danger: '#EF4444',
-              grayDark: '#1E293B',
-              grayLight: '#F1F5F9',
+              primary: '#4F46E5',      // Indigo moderne
+              secondary: '#06B6D4',    // Cyan
+              accent: '#F59E42',       // Orange chaleureux
+              success: '#22C55E',      // Vert
+              danger: '#EF4444',       // Rouge
+              warning: '#F59E0B',      // Jaune/Orange
+              grayDark: '#1E293B',     // Gris foncé
+              grayLight: '#F8FAFC',    // Gris très clair
+            },
+            fontFamily: {
+              sans: ['Inter', 'system-ui', 'sans-serif'],
+            },
+            boxShadow: {
+              'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)',
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.3s ease-in-out',
+              'slide-up': 'slideUp 0.3s ease-out',
             }
           }
         }
       }
     </script>
-    <title>Gestion de Stock</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>StockManager - Gestion de Stock</title>
+    <style>
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      
+      @keyframes slideUp {
+        from { 
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to { 
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      /* Smooth scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+      
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      
+      ::-webkit-scrollbar-track {
+        background: #f1f5f9;
+      }
+      
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 3px;
+      }
+      
+      ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+      }
+    </style>
   </head>
-  <body class="bg-gray-50">
+  <body class="bg-grayLight font-sans antialiased">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
